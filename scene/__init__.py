@@ -24,7 +24,7 @@ from argparse import Namespace
 class Scene:
 
     gaussians: Any
-    def __init__(self, args : ModelParams, gaussians : GaussianModel, cfg_kitti: KITTI360DataParams, cfg_box: BoxModelParams, load_iteration=None, shuffle=True, resolution_scales=[1.0]):
+    def __init__(self, args : ModelParams, gaussians : GaussianModel, cfg_kitti: KITTI360DataParams, cfg_box: BoxModelParams, load_iteration=None, shuffle=False, resolution_scales=[1.0]):
         """
         :param path: Path to colmap scene main folder.
         """

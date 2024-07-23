@@ -75,8 +75,9 @@ class PipelineParams(ParamGroup):
         super().__init__(parser, "Pipeline Parameters")
 
 class OptimizationParams(ParamGroup):
+    # 修改了此处训练的参数 iter
     def __init__(self, parser):
-        self.iterations = 100_000
+        self.iterations = 57200
         self.position_lr_init = 0.000016
         self.position_lr_final = 0.0000016
         self.box_lr_mult = 0.5

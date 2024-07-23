@@ -216,10 +216,10 @@ def readKITTI3603DAnnotations(path, seq, cfg_box, start_frame=None, end_frame=No
 
 
 def readKITTI360Cameras(path, seq, start_frame=None, end_frame=None, preload_image=False, cache_dir=None):
-    kitti_cams = [KITTICameraPerspective(path, seq=seq, cam_id=0), KITTICameraPerspective(path, seq=seq, cam_id=1)]
-
-
-    assert np.all(kitti_cams[0].frames == kitti_cams[1].frames), "cam_0 and cam_1 frames don't match! please check."
+    # kitti_cams = [KITTICameraPerspective(path, seq=seq, cam_id=0), KITTICameraPerspective(path, seq=seq, cam_id=1)]
+    # 修改成只读取一个相机
+    kitti_cams = [KITTICameraPerspective(path, seq=seq, cam_id=0)]
+    # assert np.all(kitti_cams[0].frames == kitti_cams[1].frames), "cam_0 and cam_1 frames don't match! please check."
     frames = sorted(list(kitti_cams[0].frames))
     # Subsample frames that correspond to the stacked pointcloud range
     if start_frame is None:
@@ -247,7 +247,8 @@ def readKITTI360Cameras(path, seq, start_frame=None, end_frame=None, preload_ima
     uid = 0
     cam_infos = []
     for frame in tqdm(frames, total=len(frames)):
-        for cam_idx in [0, 1]:
+            # 修改成只读取一个相机
+        for cam_idx in [0]: #[0,1]
             cam = kitti_cams[cam_idx]
             w2c = np.linalg.inv(cam.cam2world[frame])
             R = np.transpose(w2c[:3, :3]) # R is stored transposed due to 'glm' in CUDA code

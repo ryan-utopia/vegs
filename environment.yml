@@ -14,7 +14,7 @@ dependencies:
   - tqdm
   - ipdb
   - pip:
-    - submodules/diff-gaussian-rasterization
+    - submodules/diff_gaussian_rasterization
     - submodules/simple-knn
     - open3d
     - git+https://github.com/autonomousvision/kitti360Scripts.git
