@@ -197,3 +197,9 @@ bash bash_scripts/render_video.sh ${GPU_NUM} ${MODEL_PATH}
 ```
 
 where `${MODEL_PATH}` is the path of the trained gaussian model. Running the script will give you smooth video renderings from both interpolated and extrapolated views. 
+
+## Incremental Train
+
+```
+bash bash_script/train_kitti360_incremental.sh
+```
